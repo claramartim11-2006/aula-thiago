@@ -3,17 +3,28 @@ import './App.css'
 import Titulo from './components/Titulo'
 import Aluno from './components/Aluno'
 
-function mostrarMensagem(){
-  alert("Aluno não cadastrado!")
-}
-
 
 function App() {
+  const [nome, setNome] = useState("")
+
+  function mostrarMensagem(){
+    if (nome === ""){
+      alert("Digite um nome primeiro!")
+    }else{
+      alert(`Aluno ${nome} não cadastrado!`)
+    }
+    setNome("")
+}
+
+function nomeAluno(event) {
+  setNome(event.target.value)
+}
   return (
     <>
       <div>
         <Titulo/>
-        <Aluno/>
+        <input type="text" value={nome} onChange={(event) => setNome(event.target.value)}
+          placeholder="Digite seu nome"/>
       </div>
       <br></br>
       <div>

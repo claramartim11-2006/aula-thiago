@@ -5,31 +5,30 @@ import Aluno from './components/Aluno'
 
 
 function App() {
-  const [nome, setNome] = useState("")
+  const [nome, setNome] = useState('')
+  const [lista, setLista] = useState([])
 
-  function mostrarMensagem(){
-    if (nome === ""){
-      alert("Digite um nome primeiro!")
-    }else{
-      alert(`Aluno ${nome} não cadastrado!`)
-    }
-    setNome("")
-}
+  function adicionar() {
 
-function nomeAluno(event) {
-  setNome(event.target.value)
-}
+  setLista([...lista, nome])
+  setNome('')
+  }
+
   return (
     <>
-      <div>
-        <Titulo/>
-        <input type="text" value={nome} onChange={(event) => setNome(event.target.value)}
-          placeholder="Digite seu nome"/>
-      </div>
-      <br></br>
-      <div>
-        <button onClick={mostrarMensagem}> Verificar matricula</button>
-      </div>
+    <Titulo/>
+    <div className="con-input">
+      <input type="text" value={nome} onChange={(e) => setNome(e.target.value)}
+      placeholder="Digite seu nome:"/>
+      <button onClick={adicionar}>Adicionar</button>
+    </div>
+    <br/>
+    <div>
+      <p>------------------------------------------</p>
+      {lista.map((item, index) => (<Aluno key={index} nomeDigitado={item}/> 
+      ))}
+      <button > Excluir</button>
+    </div>
     </>
   )
 }

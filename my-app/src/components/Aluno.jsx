@@ -1,6 +1,9 @@
-function Aluno() {
+function Aluno({nomeDigitado}) {
     return(
     <>
+    <div>
+        <p>* {nomeDigitado}</p>
+    </div>
     </>
     )
 }

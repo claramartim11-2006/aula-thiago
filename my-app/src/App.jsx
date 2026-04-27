@@ -1,53 +1,48 @@
 import { useState } from 'react'
 import './App.css'
 import Titulo from './components/Titulo'
-import Aluno from './components/Aluno'
+import Cliente from './components/Cliente'
 
 
 function App() {
-  function numero(){
-    
-  }
-  return(
-    <>
+  
+  const [servico, setServico] = useState('')
+  const [agenda, setAgenda] = useState([])
 
-    </>
-  )
-
-
-
-  /*const [nome, setNome] = useState('')
-  const [lista, setLista] = useState([])
-
-  function adicionar() {
-  setLista([...lista, nome])
-  setNome('')
+  function adicionarServico() {
+  setAgenda([...agenda, servico])
+  setServico('')
   }
 
-  function alunoExcluir(nomeExcluir){
-    const novaLista = lista.filter(item => item !== nomeExcluir)
-    setLista(novaLista)
+  function excluirServico(indexExcluir){
+    const novaAgenda = agenda.filter((_, index) => index !== indexExcluir)
+    setAgenda(novaAgenda)
   }
 
   return (
     <>
     <Titulo/>
-    <br/>
     <div className="con-input">
-      <input type="text" value={nome} onChange={(e) => setNome(e.target.value)}
-      placeholder="Digite seu nome:"/>
-      <button onClick={adicionar}>Adicionar</button>
+      <h1> Selecione o serviço desejado</h1>
+
+    <div className='caixa-entrada'>
+      <input type="text" 
+      value={servico} 
+      onChange={(e) => setServico(e.target.value)}
+      placeholder="Ex: SPA dos pés, Esmaltação Pé e Mão... "
+    />
+      <button onClick={adicionarServico}>Agendar</button>
     </div>
+    </div>
+
     <div>
-      <p>------------------------------------------</p>
-      {lista.map((item, index) => (<Aluno 
+      {lista.map((item, index) => (<Cliente 
       key={index} 
       nomeDigitado={item}
-      excluir={() => alunoExcluir(item)}/> 
+      excluir={() => clienteExcluir(item)}/> 
       ))}
     </div>
     </>
-  )*/
+  )
 }
-
 export default App

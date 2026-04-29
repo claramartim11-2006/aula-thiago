@@ -1,0 +1,77 @@
+:root {
+    --dourado: #d4af37;
+    --bege: #f5f5dc;
+    --rosa-claro: #fff0f5;
+    --branco: #ffffff;
+    --texto: #4a4a4a;
+}
+
+.cadastro-container{
+    background-color: var(--branco);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: o 10px 25px rgba(212, 175, 55, 0.1);
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    border: 1px solid var(--bege);
+}
+
+h2 {
+    color: var(--dourado);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+}
+
+p {
+    color: var(--texto);
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--dourado);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--bege);
+    border-radius: 8px;
+    outline: none;
+    background-color: var(--rosa-claro);
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--dourado);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+}
+
+.btn-proximo {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--dourado);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-proximo:hover {
+    background-color: #b8962e;
+    transform: translateY(-2px);
+}

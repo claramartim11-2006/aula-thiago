@@ -1,48 +1,75 @@
-import { useState } from 'react'
-import './App.css'
-import Titulo from './components/Titulo'
-import Cliente from './components/Cliente'
+import { useState } from 'react';
+import './App.css';
+import CadastroCliente from './components/cadastro/CadastroCliente';
 
 
 function App() {
+
+  const [tela, setTela] = useState('inicio')
+  const [nome, setNome] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefone, setTelefone] = useState('')
   
-  const [servico, setServico] = useState('')
-  const [agenda, setAgenda] = useState([])
+  const voltarELimpar =() =>{
+    setNome('');
+    setEmail('');
+    setTelefone('');
+    setTela('inicio');
+  };
 
-  function adicionarServico() {
-  setAgenda([...agenda, servico])
-  setServico('')
-  }
+  return(
+    <div className='container-principal'>
 
-  function excluirServico(indexExcluir){
-    const novaAgenda = agenda.filter((_, index) => index !== indexExcluir)
-    setAgenda(novaAgenda)
-  }
+      {tela === 'inicio' && (
+        <div className='boas-vindas'>
+          <h1 className='logo-site'>EveNails</h1>
+          <span className='h2'>Já possui cadastro?</span>
+          <div className='botoes-grupo'>
+            <button className='btn-rosa' onClick={() => setTela('login')}> Logar </button>
+            <button className='btn-rosa' onClick={() => setTela('cadastro')}> Cadastrar </button>
+          </div>
+        </div>
+      )}
 
-  return (
-    <>
-    <Titulo/>
-    <div className="con-input">
-      <h1> Selecione o serviço desejado</h1>
+      {tela === 'login' && (
+        <div className="card-form">
+          <span className='h2'>Acessar Conta</span>
+          <input
+          type='email'
+          placeholder='Digite seu e-mail'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          />
+          <button className='btn-rosa'>Entrar</button>
+          <button className='btn-rosa' onClick={() => voltarELimpar()}>Voltar</button>
+        </div>
+      )}
 
-    <div className='caixa-entrada'>
-      <input type="text" 
-      value={servico} 
-      onChange={(e) => setServico(e.target.value)}
-      placeholder="Ex: SPA dos pés, Esmaltação Pé e Mão... "
-    />
-      <button onClick={adicionarServico}>Agendar</button>
+      {tela === 'cadastro' && (
+        <div className='card-form'>
+          <span className='h2'>Cadastrar</span>
+          <input
+          type='text'
+          placeholder='Seu Nome'
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          />
+          <input 
+          type='email'
+          placeholder='Seu E-mail'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          />
+          <input 
+          type='telefone'
+          placeholder='Seu Telefone(WhatsApp)'
+          value={telefone}
+          onChange={(e) => setTelefone(e.target.value)}
+          />
+          <button className='btn-rosa'>Finalizar Cadastro</button>
+          <button className='btn-rosa' onClick={() => voltarELimpar()}>Voltar</button>
+        </div>
+      )}
     </div>
-    </div>
-
-    <div>
-      {lista.map((item, index) => (<Cliente 
-      key={index} 
-      nomeDigitado={item}
-      excluir={() => clienteExcluir(item)}/> 
-      ))}
-    </div>
-    </>
-  )
-}
+  )}
 export default App
